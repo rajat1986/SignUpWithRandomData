@@ -22,5 +22,5 @@
 
 # Execution -
   Using Maven Command -	
-   mvn install
+   mvn install &&
    mvn test
