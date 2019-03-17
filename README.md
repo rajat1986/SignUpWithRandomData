@@ -19,6 +19,7 @@
   2. TestNG defined in pom.xml
   3. Apache Maven 3.6
   4. Selenium-Java
+  5. Google Chrome
 
 # Execution -
   Using Maven Command -	
