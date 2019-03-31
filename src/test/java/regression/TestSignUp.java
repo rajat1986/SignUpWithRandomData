@@ -23,13 +23,7 @@ public class TestSignUp {
 	public void setup()throws InterruptedException  {
 		this.browser = Browser.getInstance(strBrowserType);
 		this.driver = this.browser.getWebDriver();
-		
-		try {
-			this.driver.get("https://www.facebook.com");
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+
 		this.driver.manage().window().maximize();
 		
 	}
@@ -37,13 +31,19 @@ public class TestSignUp {
 	@BeforeMethod
 	public void everyTime() {
 		//this.browser.clear_cache();
+		try {
+			this.driver.get("https://www.facebook.com");
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		this.objSignUp = new SignUp(this.driver);
 		PageFactory.initElements(this.driver, this.objSignUp);
 		this.objSignUp.initializeVariables();
 	}
 	
 	@Test(dataProvider = "SignUpTestData", dataProviderClass=SignUpDataProvider.class)
-	public void TestSignUpSuccess(String fName, String lName, String email, String pwd, String mm, String dd, String yyyy, String sex){
+	public void TestSignUpSuccess(String fName, String lName, String email, String pwd, String mm, String dd, String yyyy, String sex) throws InterruptedException{
 		this.objSignUp.setFirstName(fName);
 		this.objSignUp.setLastName(lName);
 		this.objSignUp.setMobileEmail(email);
@@ -56,8 +56,9 @@ public class TestSignUp {
 		this.objSignUp.clickSubmit();
 		this.objConfirmEmail = new ConfirmEmail(this.driver);
 		PageFactory.initElements(this.driver, this.objConfirmEmail);
-		if(!this.objConfirmEmail.getConfirmation())
-			org.testng.Assert.fail("No email confirmation prompted : ");
+		//Thread.sleep(10000);
+		if(!this.browser.verifyNetworkLogs())
+			org.testng.Assert.fail("Test Failed : No email confirmation prompted");
 		
 	}
 	
