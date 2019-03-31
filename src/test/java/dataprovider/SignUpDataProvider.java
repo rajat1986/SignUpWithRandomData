@@ -30,6 +30,7 @@ public class SignUpDataProvider {
 	public Object[][] getSignUpTestData(){
 	    return new Object[][] 
 	        	{
+	    			getPersonData(),
 	    			getPersonData()
 	    	};
 	}
