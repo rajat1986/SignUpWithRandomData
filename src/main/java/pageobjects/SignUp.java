@@ -82,6 +82,7 @@ public class SignUp {
 	
 	public void setFirstName(String strFname)
 	{
+		this.txtbxFirstName.clear();
 		this.txtbxFirstName.sendKeys(strFname);
 	}
 	
@@ -92,6 +93,7 @@ public class SignUp {
 	
 	public void setLastName(String strLname)
 	{
+		this.txtbxLastName.clear();
 		this.txtbxLastName.sendKeys(strLname);
 	}
 	
@@ -102,6 +104,7 @@ public class SignUp {
 	
 	public void setMobileEmail(String strMobileEmail)
 	{
+		this.txtbxMobileEmail.clear();
 		this.txtbxMobileEmail.sendKeys(strMobileEmail);
 	}
 	
@@ -114,6 +117,7 @@ public class SignUp {
 	{
 		WebDriverWait wait=new WebDriverWait(driver, 20);
 		wait.until(ExpectedConditions.elementToBeClickable(txtbxConfirmEmail));
+		this.txtbxConfirmEmail.clear();
 		this.txtbxConfirmEmail.sendKeys(strEmail);
 	}
 	
@@ -129,6 +133,7 @@ public class SignUp {
 	
 	public void setPassword(String strPassword)
 	{
+		this.txtbxPassword.clear();
 		this.txtbxPassword.sendKeys(strPassword);
 	}
 	
